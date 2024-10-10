@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  organizar-por-cliente:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    command: ["streamlit", "run", "/app/organizar_por_cliente.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    volumes:
+      - ./data:/app/data  # Monta o diretório data
+
+  organizar-por-responsavel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8502:8502"
+    command: ["streamlit", "run", "/app/organizar_por_responsavel.py", "--server.port=8502", "--server.address=0.0.0.0"]
+    volumes:
+      - ./data:/app/data  # Monta o diretório data
+
+  organizar-por-status:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8503:8503"
+    command: ["streamlit", "run", "/app/organizar_por_status.py", "--server.port=8503", "--server.address=0.0.0.0"]
+    volumes:
+      - ./data:/app/data  # Monta o diretório data
